@@ -26,8 +26,7 @@ Check out the [example.json](data/example.json) file in the data directory. It i
 ```
 
 ## How to install this?
-Install via SSH (`pip install git+ssh://github.com/frank690/draw-some-gantts`).
-
+Install via SSH (`pip install git+https://github.com/frank690/draw-some-gantts.git@main`).
 
 ## How to use this?
 After installing run `draw-some-gantts --help` to see the available options.
