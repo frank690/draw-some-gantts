@@ -30,3 +30,6 @@ Install via SSH (`pip install git+https://github.com/frank690/draw-some-gantts.g
 
 ## How to use this?
 After installing run `draw-some-gantts --help` to see the available options.
+
+## How does the gantt chart look like?
+![Timeline](./media/example.svg)

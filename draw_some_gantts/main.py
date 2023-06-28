@@ -7,28 +7,17 @@ __all__ = [
 ]
 
 import sys
-from typing import Optional
 
 from draw_some_gantts.cli import parse
-from draw_some_gantts.constants import EXAMPLE_JSON_FILE, EXAMPLE_OUTPUT_FILE
 from draw_some_gantts.scripts import create_timeline, read_data, save_timeline
 
 
-def run(file: Optional[str], output: Optional[str]):
+def run(file: str, output: str):
     """
     Run the script to read the given file and generate a gantt chart to output.
     """
     try:
         print("Generating gantt chart...")
-
-        if file is None:
-            print("No source file given. Falling back to example file.")
-            file = EXAMPLE_JSON_FILE
-
-        if output is None:
-            print("No output given. Falling back to example output.")
-            output = EXAMPLE_OUTPUT_FILE
-
         print(f"Reading file {file}...")
         date, df = read_data(path=file)
 

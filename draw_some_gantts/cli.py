@@ -14,16 +14,16 @@ def parse():
     parser.add_argument(
         "-o",
         "--output",
+        required=True,
         type=str,
-        default="./output/example.svg",
         help="Path to output (svg) file that will be created / show the gantt chart.",
     )
 
     parser.add_argument(
         "-f",
         "--file",
+        required=True,
         type=str,
-        default="./data/example.json",
         help="Path to source (json) file that will be used to create the gantt chart.",
     )
 
