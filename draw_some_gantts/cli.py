@@ -15,8 +15,8 @@ def parse():
         "-o",
         "--output",
         type=str,
-        default="./output/example.png",
-        help="Path to output (png) file that will be created / show the gantt chart.",
+        default="./output/example.svg",
+        help="Path to output (svg) file that will be created / show the gantt chart.",
     )
 
     parser.add_argument(

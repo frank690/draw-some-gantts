@@ -2,7 +2,7 @@
 This file contains all the scripts that are used in this repository.
 """
 
-__all__ = ["read_data", "create_timeline"]
+__all__ = ["read_data", "create_timeline", "save_timeline"]
 
 
 import json
@@ -25,12 +25,12 @@ def read_data(path: str) -> Tuple[str, pd.DataFrame]:
     return data["date"], pd.DataFrame(data["tasks"])
 
 
-def create_timeline(df: pd.DataFrame, date: str) -> None:
+def create_timeline(df: pd.DataFrame, date: str) -> px.timeline:
     """
     Use the given pandas dataframe to create a plotly timeline.
     :param df: pandas dataframe
     :param date: date as string that will be set as the title of the plotly timeline
-    :return: None
+    :return: plotly express timeline object
     """
     fig = px.timeline(
         df,
@@ -42,4 +42,13 @@ def create_timeline(df: pd.DataFrame, date: str) -> None:
         color_discrete_map=COLORS,
     )
     fig.update_yaxes(autorange="reversed")
-    fig.show()
+    return fig
+
+
+def save_timeline(fig: px.timeline, path: str) -> None:
+    """
+    Save the given plotly timeline to the given path.
+    :param fig: plotly express timeline object
+    :param path: path to output file
+    """
+    fig.write_image(path, width=1200, height=600)

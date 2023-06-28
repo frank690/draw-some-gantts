@@ -10,7 +10,8 @@ import sys
 from typing import Optional
 
 from draw_some_gantts.cli import parse
-from draw_some_gantts.scripts import create_timeline, read_data
+from draw_some_gantts.constants import EXAMPLE_JSON_FILE, EXAMPLE_OUTPUT_FILE
+from draw_some_gantts.scripts import create_timeline, read_data, save_timeline
 
 
 def run(file: Optional[str], output: Optional[str]):
@@ -22,17 +23,20 @@ def run(file: Optional[str], output: Optional[str]):
 
         if file is None:
             print("No source file given. Falling back to example file.")
-            file = "./data/example.json"
+            file = EXAMPLE_JSON_FILE
 
         if output is None:
             print("No output given. Falling back to example output.")
-            output = "./output/example.png"
+            output = EXAMPLE_OUTPUT_FILE
 
         print(f"Reading file {file}...")
         date, df = read_data(path=file)
 
-        print(f"Generating gantt chart to {output}...")
-        create_timeline(df=df, date=date)
+        print("Generating gantt chart ...")
+        timeline = create_timeline(df=df, date=date)
+
+        print(f"Saving to {output}...")
+        save_timeline(fig=timeline, path=output)
 
         print("Process done.")
         sys.exit(0)
