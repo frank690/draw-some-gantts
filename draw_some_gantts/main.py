@@ -42,6 +42,7 @@ def run(file: Optional[str], output: Optional[str]):
         sys.exit(0)
     except Exception:
         print("Unexpected error:", sys.exc_info())
+        print(f"file: {file}, output: {output}")
         sys.exit(1)
 
 
