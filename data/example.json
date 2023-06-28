@@ -1,0 +1,41 @@
+{
+    "date": "2023-06-28",
+    "tasks": [
+        {
+            "Task": "Understand the <br>requirements and problems",
+            "Start": "2023-06-14",
+            "Finish": "2023-06-21",
+            "State": "Completed"
+        },
+        {
+            "Task": "Setup documentation <br>and an initial timeline",
+            "Start": "2023-06-21",
+            "Finish": "2023-06-28",
+            "State": "Completed"
+        },
+        {
+            "Task": "Get some data",
+            "Start": "2023-06-21",
+            "Finish": "2023-07-05",
+            "State": "In Progress"
+        },
+        {
+            "Task": "Write a script that does <br>the job with minimum requirements",
+            "Start": "2023-07-05",
+            "Finish": "2023-07-26",
+            "State": "Not Started"
+        },
+        {
+            "Task": "Make the script <br>run with live data",
+            "Start": "2023-07-26",
+            "Finish": "2023-08-16",
+            "State": "Not Started"
+        },
+        {
+            "Task": "Incorporate the program logic <br>into production code",
+            "Start": "2023-08-16",
+            "Finish": "2023-09-27",
+            "State": "Not Started"
+        }
+    ]
+}
