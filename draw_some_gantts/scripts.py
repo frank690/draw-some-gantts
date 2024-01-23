@@ -40,7 +40,7 @@ def interpret_data(data: dict) -> Tuple[str, pd.DataFrame]:
     tasks = pd.DataFrame(data["tasks"])
 
     if sort_by_date:
-        tasks = tasks.sort_values(by=["Start", "Finish"])
+        tasks = tasks.sort_values(by=["Start", "Finish"], ignore_index=True)
 
     return date, tasks
 
@@ -60,8 +60,10 @@ def create_timeline(df: pd.DataFrame, date: str) -> px.timeline:
         y="Task",
         color="State",
         color_discrete_map=COLORS,
+        category_orders=dict(Task=df["Task"].tolist()),
     )
-    fig.update_yaxes(autorange="reversed")
+    fig.add_vline(x=date, line_width=1, line_color="red", line_dash="dash")
+
     return fig
 
 

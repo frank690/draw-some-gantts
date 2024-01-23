@@ -1,5 +1,6 @@
 {
     "date": "2023-06-28",
+    "sort": true,
     "tasks": [
         {
             "Task": "Understand the <br>requirements and problems",
@@ -15,7 +16,7 @@
         },
         {
             "Task": "Get some data",
-            "Start": "2023-06-21",
+            "Start": "2023-06-20",
             "Finish": "2023-07-05",
             "State": "In Progress"
         },
