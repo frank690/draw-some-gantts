@@ -2,7 +2,7 @@
 This file contains all the scripts that are used in this repository.
 """
 
-__all__ = ["read_data", "create_timeline", "save_timeline"]
+__all__ = ["read_data", "interpret_data", "create_timeline", "save_timeline"]
 
 
 import json
@@ -14,15 +14,35 @@ import plotly.express as px
 from draw_some_gantts.constants import COLORS
 
 
-def read_data(path: str) -> Tuple[str, pd.DataFrame]:
+def read_data(path: str) -> Tuple[str, bool, pd.DataFrame]:
     """
-    Read the json source file..
+    Read the json source file.
     :param path: path to the json file
-    :return: extracted date str and pandas dataframe
+    :return: extracted data
     """
     with open(path, "r") as f:
         data = json.load(f)
-    return data["date"], pd.DataFrame(data["tasks"])
+    return data
+
+
+def interpret_data(data: dict) -> Tuple[str, pd.DataFrame]:
+    """
+    Interpret the previously loaded data.
+
+    Extract the sort flag and sort the tasks by their start and finish dates
+    if said flag is true or non-existing.
+
+    :param data: data as dict
+    :return: date and (possibly sorted) tasks as pandas dataframe
+    """
+    date = data["date"]
+    sort_by_date = data.get("sort", True)
+    tasks = pd.DataFrame(data["tasks"])
+
+    if sort_by_date:
+        tasks = tasks.sort_values(by=["Start", "Finish"])
+
+    return date, tasks
 
 
 def create_timeline(df: pd.DataFrame, date: str) -> px.timeline:

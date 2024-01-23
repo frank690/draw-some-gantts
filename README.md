@@ -4,6 +4,7 @@ This repository is a just a script that one can use via CLI to draw a gantt char
 ## What should my source (json) file look like?
 Check out the [example.json](data/example.json) file in the data directory. It is a json file that contains two main keys.
 - `Date`: Contains the date of when the current gantt chart was created. It acts as a timestamp and will also be plotted as the timeline title.
+- `Sorting`: Boolean flag (can either be `true` or `false`) to indicate if events should be sorted by start + finish date. Is `true` by default.
 - `Tasks`: Contains a list of dictionaries. Each dictionary represents a task. The keys of the dictionary are the following:
     - `Task`: The name/description of the task
     - `Start`: The start date of the task in the format `yyyy-mm-dd`
@@ -13,6 +14,7 @@ Check out the [example.json](data/example.json) file in the data directory. It i
 ```json
 {
     "date": "2023-06-28",
+    "sort": false,
     "tasks": [
         {
             "Task": "Understand the <br>requirements and problems",

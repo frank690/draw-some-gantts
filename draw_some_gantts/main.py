@@ -9,7 +9,12 @@ __all__ = [
 import sys
 
 from draw_some_gantts.cli import parse
-from draw_some_gantts.scripts import create_timeline, read_data, save_timeline
+from draw_some_gantts.scripts import (
+    create_timeline,
+    read_data,
+    interpret_data,
+    save_timeline,
+)
 
 
 def run(file: str, output: str):
@@ -19,7 +24,10 @@ def run(file: str, output: str):
     try:
         print("Generating gantt chart...")
         print(f"Reading file {file}...")
-        date, df = read_data(path=file)
+        data = read_data(path=file)
+
+        print("Interpreting data...")
+        date, df = interpret_data(data=data)
 
         print("Generating gantt chart ...")
         timeline = create_timeline(df=df, date=date)
@@ -31,7 +39,7 @@ def run(file: str, output: str):
         sys.exit(0)
     except Exception:
         print("Unexpected error:", sys.exc_info())
-        print(f"file: {file}, output: {output}")
+        print(f"File: {file}, Output: {output}")
         sys.exit(1)
 
 
